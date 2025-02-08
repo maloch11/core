@@ -4322,8 +4322,12 @@ uint64 Spell::handle_delayed(uint64 t_offset)
                 CheckAtDelay(&ihit);
                 DoAllEffectOnTarget(&ihit);
             }
-            else if (next_time == 0 || ihit.timeDelay < next_time)
-                next_time = ihit.timeDelay;
+            else
+            {
+                if (next_time == 0 || ihit.timeDelay < next_time)
+                    next_time = ihit.timeDelay;
+                break;
+            }
         }
     }
 
